@@ -1,0 +1,17 @@
+class Solution {
+    public int findGCD(int[] nums) {
+        int smallest = Integer.MAX_VALUE;
+        int largest = Integer.MIN_VALUE;
+        for(int i = 0 ; i < nums.length ; i++){
+            smallest = Math.min(nums[i] , smallest);
+            largest = Math.max(nums[i] , largest);
+        }
+        int ans = 1;
+        for(int i = 1 ; i <= largest ; i++){ 
+            if(smallest % i == 0 && largest % i == 0 ){
+                ans = i;
+            }
+        }
+        return ans;
+    }
+}
