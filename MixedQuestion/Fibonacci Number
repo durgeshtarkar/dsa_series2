@@ -1,0 +1,17 @@
+class Solution {
+    int findFib(int n){
+        if(n == 0){
+            return 0;
+        }
+        if(n == 1 || n == 2){
+            return 1;
+        }
+        int fib = findFib(n-1) + findFib(n-2);
+        return fib;
+
+    }
+    public int fib(int n) {
+       int res = findFib(n);
+       return res;
+    }
+}
