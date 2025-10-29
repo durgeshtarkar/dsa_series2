@@ -1,0 +1,44 @@
+class Solution {
+    static int maximumNumber(int[] nums){
+        int max = Integer.MIN_VALUE;
+        for(int i = 0 ; i < nums.length ; i++){
+            if(nums[i] > max){
+                max = nums[i];
+        }
+    }
+    return max;
+    }
+
+    static int findSum(int[] nums, int divisor){
+        int sum = 0;
+        for(int i = 0 ; i < nums.length ; i++){
+            int currentAfterDivide = (int)Math.ceil((double)nums[i]/ divisor);
+            sum+= currentAfterDivide;
+            }
+        return sum;
+        }
+    public int smallestDivisor(int[] nums, int threshold) {
+       int low = 1;
+       int high = maximumNumber(nums);
+       int n = nums.length ;
+       int ans =-1;
+    //    if(n > threshold){
+    //         return -1;
+    //    }
+      
+       while(low <= high){
+        int mid = low + (high - low)/2;
+        int sum = findSum(nums , mid);
+          if(sum <= threshold){
+            ans = mid;
+            high = mid -1 ;
+
+          }else{
+            low = mid +1;
+          }
+       }
+       return low;
+       
+
+    }
+}
