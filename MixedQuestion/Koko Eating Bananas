@@ -1,0 +1,33 @@
+class Solution {
+    static int FindMax(int[] arr){
+        int max = Integer.MIN_VALUE;
+        for(int i = 0 ; i < arr.length ; i++){
+            max = Math.max(max , arr[i]);
+        }
+        return max;
+    }
+    static int CalculateTotalHour(int arr[] , int hourly){
+        int totalhour = 0;
+        for(int i = 0 ; i < arr.length ; i++){
+            totalhour += Math.ceil((double)(arr[i])/(double)(hourly));
+        }
+        return totalhour;
+    }
+    public int minEatingSpeed(int[] piles, int h) {
+        int low = 1 ;
+        int high = FindMax(piles);
+       
+        while(low<=high){
+            int mid = (low + high )/2;
+             int totalhrs = CalculateTotalHour(piles , mid);
+            if(totalhrs <= h){
+                high = mid -1;
+
+            }else{
+                low = mid +1;
+            }
+        }
+        return low;
+        
+    }
+}
