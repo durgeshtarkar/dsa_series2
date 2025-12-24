@@ -1,0 +1,38 @@
+class Solution {
+        static boolean isVowel(char c) {
+        return c=='a'|| c=='e'|| c=='i'|| c=='o'|| c=='u';
+    }
+
+       private int atMostK(String word, int k) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int left = 0, count = 0;
+
+        for (int right = 0; right < word.length(); right++) {
+            char c = word.charAt(right);
+
+            if (!isVowel(c)) {
+                map.clear();
+                left = right + 1;
+                continue;
+            }
+
+            map.put(c, map.getOrDefault(c, 0) + 1);
+
+         while(map.size()>k){
+            char l = word.charAt(left);
+            map.put(l,map.get(l)-1);
+            if(map.get(l)==0){
+                map.remove(l);
+            }
+            left++;
+         }
+
+         count+= (right-left+1);
+    }
+    return count;
+    }
+
+    public int countVowelSubstrings(String word) {
+        return atMostK(word,5)-atMostK(word,4);
+    }
+}
