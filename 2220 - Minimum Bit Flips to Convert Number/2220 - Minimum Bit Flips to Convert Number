@@ -1,0 +1,99 @@
+# Minimum Bit Flips to Convert Number
+
+**Difficulty:** Easy
+
+---
+
+## Problem Statement
+
+A **bit flip** of a number `x` means choosing a bit in its binary representation and flipping it from `0` to `1` or from `1` to `0`.
+
+Given two integers `start` and `goal`, return the **minimum number of bit flips** required to convert `start` into `goal`.
+
+---
+
+## Examples
+
+### Example 1
+
+**Input:**
+
+```
+start = 10, goal = 7
+```
+
+**Output:**
+
+```
+3
+```
+
+**Explanation:**
+Binary representations:
+
+```
+10 -> 1010
+7  -> 0111
+```
+
+Steps:
+
+* `1010 -> 1011` (flip 1st bit from right)
+* `1011 -> 1111` (flip 3rd bit from right)
+* `1111 -> 0111` (flip 4th bit from right)
+
+---
+
+### Example 2
+
+**Input:**
+
+```
+start = 3, goal = 4
+```
+
+**Output:**
+
+```
+3
+```
+
+**Explanation:**
+Binary representations:
+
+```
+3 -> 011
+4 -> 100
+```
+
+Three bit flips are required to convert `3` to `4`.
+
+---
+
+## Constraints
+
+* `0 <= start, goal <= 10^9`
+
+---
+
+## Approach
+
+1. Compute the **XOR** of `start` and `goal`.
+2. Each `1` in the XOR result represents a bit position where the two numbers differ.
+3. Count the number of set bits (`1`s) in the XOR result.
+
+The count of set bits is the **minimum number of flips required**.
+
+---
+
+## Complexity Analysis
+
+* **Time Complexity:** `O(1)` (bounded by number of bits)
+* **Space Complexity:** `O(1)`
+
+---
+
+## Tags
+
+* Bit Manipulation
+* XOR
