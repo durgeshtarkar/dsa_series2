@@ -1,0 +1,21 @@
+class Solution {
+    public int heightChecker(int[] heights) {
+        int[] expected = heights.clone();// to copy the element
+         // selection sort here
+         int n = expected.length;
+         for(int i = 0 ; i <= n-2 ; i++){
+            int minIndex = i;
+            for(int j = i+1 ; j <= n-1; j++) {
+                if(expected[j] < expected[minIndex]) minIndex =j ;
+            }
+            int temp = expected[i];
+            expected[i] = expected[minIndex];
+            expected[minIndex] = temp;
+         }
+        int count= 0;
+        for(int i = 0 ; i < n ; i++){
+            if(heights[i] != expected[i]) count++;
+        }
+        return count;
+    }
+}
