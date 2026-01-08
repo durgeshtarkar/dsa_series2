@@ -2,9 +2,12 @@ class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         HashMap<String , List<String>> map = new HashMap<>();
         for(String word : strs){
-            char[] ch = word.toCharArray();
-            Arrays.sort(ch);
-            String key = new String(ch);
+            int[] count = new int[26];
+            for(char ch :word.toCharArray()){
+                
+                count[ch-'a']++;
+            }
+            String key = Arrays.toString(count);// convert count array to string
             if(!map.containsKey(key)){
                 map.put(key , new ArrayList<>());
             }
