@@ -19,7 +19,7 @@ class Solution {
             for(int i = 0 ; i < maxFreq ; i++){
                 res.append(maxChar);
             }
-            freq[maxChar] = 0; // marked it is visited;
+            freq[(int)maxChar] = 0; // marked it is visited;
         }
             
         
