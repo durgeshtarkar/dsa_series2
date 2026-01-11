@@ -1,13 +1,16 @@
 import java.util.StringTokenizer;
+//- Imports the StringTokenizer class from java.util.
+//- StringTokenizer is used to split a string into tokens (substrings) based on a delimiter (here: whitespace " ").
 
 class Solution {
     public boolean areNumbersAscending(String s) {
         StringTokenizer st = new StringTokenizer(s, " ");
         int prev = 0;
-        while(st.hasMoreTokens()){
-            String token = st.nextToken();
+        while(st.hasMoreTokens()){ // iterate over all token 
+            String token = st.nextToken(); //- Retrieves the next token (word or number) from the string.
+
             if(isNum(token)){
-                int num = Integer.parseInt(token);
+                int num = Integer.parseInt(token); // convert numeric string to integer
 
                 if(num <= prev){
                     return false;
