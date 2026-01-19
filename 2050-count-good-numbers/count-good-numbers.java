@@ -1,27 +1,25 @@
 class Solution {
-    private static final long MOD = 1_000_000_007;
-
-    // Fast modular exponentiation (binary exponentiation)
-    private long modPow(long base, long exp) {
-        long result = 1;
-        base %= MOD;
-        while (exp > 0) {
-            if ((exp & 1) == 1) { // if exp is odd
-                result = (result * base) % MOD;
-            }
-            base = (base * base) % MOD;
-            exp >>= 1; // divide exp by 2
+    // MOD hum isliye lga rhe h kyunki long bahut
+    // bda hota h to overflow ho skta h to prevent overfloe we use mod
+    private long  MOD = 1_000_000_007;
+    private long pow(long x , long n){
+        if(n==0){
+            return 1;
         }
-        return result;
+         long temp = pow(x,n/2);
+        if(n%2==0){
+            return (temp*temp)%MOD;
+        }else{
+            return (x*temp*temp)%MOD;
+        }
     }
-
     public int countGoodNumbers(long n) {
-        long evenCount = (n + 1) / 2; // ceil(n/2)
-        long oddCount = n / 2;        // floor(n/2)
+        long even = (n+1)/2 ;
+        long odd = n/2;
+        long first = pow(5,even)%MOD;
+        long second = pow(4,odd)%MOD;
 
-        long waysEven = modPow(5, evenCount); // 5 choices for even indices
-        long waysOdd = modPow(4, oddCount);   // 4 choices for odd indices
+        return (int)((first*second)% MOD);
 
-        return (int)((waysEven * waysOdd) % MOD);
     }
 }
