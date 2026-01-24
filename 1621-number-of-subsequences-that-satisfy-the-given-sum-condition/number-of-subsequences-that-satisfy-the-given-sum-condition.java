@@ -10,7 +10,7 @@ class Solution {
         }
 
         
-        int count = 0;
+        long count = 0;
         int l = 0;
         int r = nums.length - 1;
         while(l <= r){
