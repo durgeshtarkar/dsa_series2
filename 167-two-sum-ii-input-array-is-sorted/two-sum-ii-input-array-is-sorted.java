@@ -4,7 +4,6 @@ class Solution {
       int end = numbers.length-1;
       int sum = 0;
       while(start < end){
-        int mid = (start + end)/2;
         sum = numbers[start] + numbers[end];
         if(sum == target){
             return new int[]{start+1,end+1};
