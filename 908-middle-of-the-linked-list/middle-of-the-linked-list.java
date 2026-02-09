@@ -10,18 +10,13 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head)  {
-        // Method 1 -> time complexity -> O(n)  , but it is not one pass solution
-        int length = 0;
-        ListNode temp = head;
-        while(temp != null){
-            temp = temp.next;
-            length++;
-        }
-        temp = head;
-        for(int i = 1; i <= length/2 ; i++){
-            temp = temp.next;
-        }
-        return temp;
-
+       // METHOD 2 -> SLOW/FAST APPROACH
+       ListNode slow = head;
+       ListNode fast = head;
+       while(fast!=null && fast.next != null){ //fast.next != null  &&   fast!=null -> hum aese nhi likh skte kyunki and me agr pehli condiion sahi nhi hoti to dusri check nhi hoti to isse fast condition jo (fst pehle fast.next se) vo check nhi hoga to null pointer exception aajaega.  fast.next!=null => odd length , fast!= null for even length
+           slow = slow.next;
+           fast = fast.next.next;
+       }
+       return slow; 
     }
 }
