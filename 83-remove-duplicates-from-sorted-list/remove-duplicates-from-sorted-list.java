@@ -10,16 +10,21 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        ListNode temp = head;
+        // two pointer approach
+        ListNode i = head;
+        ListNode j = head;
         if(head==null) return null;
-        if(head.next==null)  return head;
-        while(temp!=null && temp.next!=null){
-            if(temp.val == temp.next.val){
-                temp.next = temp.next.next;
+    
+        while(j!=null ){
+            if(i.val==j.val){
+                j= j.next;
             }else{
-            temp = temp.next;
+                i.next= j;
+                i=j;
             }
         }
+        i.next = null;
+       
         return head;
     }
 }
