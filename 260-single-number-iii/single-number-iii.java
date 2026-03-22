@@ -1,18 +1,21 @@
 class Solution {
     public int[] singleNumber(int[] nums) {
-        // bruteforce 
-        HashMap<Integer, Integer> map = new HashMap<>();
+        // optimal
+        int xor = 0;
         for(int num : nums){
-            map.put(num , map.getOrDefault(num, 0)+1);
+            xor ^= num;
         }
-        int[] res = new int[2];
-        int index = 0;
-        for(int key: map.keySet()){
-            if(map.get(key)==1){
-                res[index++] = key;
-            }
 
+        int mask = (xor & (xor - 1))^xor;
+        int b1 = 0 , b2 = 0;
+        for(int ele : nums){
+            if((ele & mask) != 0) b1^=ele;
+            else b2^=ele;
         }
-         return res;
+        int[] res = {b1,b2};
+        Arrays.sort(res);
+        return res;
+
+         
     }
 }
